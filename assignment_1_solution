@@ -1,0 +1,21 @@
+def shortest_string(s, x):
+    n = len(s)
+    new_substr = []
+    
+    for i in range(n):
+        for j in range(i + x - 1, n):
+            if s[i] == s[j]:
+                substr = s[i:j+1]
+                if len(substr) >= x and (not new_substr or len(substr) < len(new_substr[0])):
+                    new_substr = [substr]
+                elif len(substr) == len(new_substr[0]):
+                    new_substr.append(substr)
+    return new_substr
+
+s = "abccdbacca"
+print("x: 3 Answer: ", ''.join(shortest_string(s, 3)))  
+print("x: 4 Answer: ", ''.join(shortest_string(s, 4)))  
+print("x: 5 Answer: ", ' '.join(shortest_string(s, 5)))  
+print("x: 6 Answer: ", ' '.join(shortest_string(s, 6)))  
+print("x: 7 Answer: ", ' '.join(shortest_string(s, 7)))  
+print("x: 8 Answer: ", ''.join(shortest_string(s, 8)))  
